@@ -1,28 +1,43 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+<div id="app">
+<h1> Movie Quiz</h1>
+<button v-on:click="testMessage">Print q1 correct answer to console</button>
+<list-questions :quizQuestions='quizQuestions' > </list-questions>
+</div>
+  
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
+import ListQuestions from './components/ListQuestions.vue';
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
-  }
+  data () {
+    return {
+      quizQuestions: [],
+    }
+  },
+  methods: {
+    testMessage: function () {
+      console.log(`Correct answer to question1 is ${this.quizQuestions[0].correct_answer}`)
+    }
+  },
+  mounted: function () {
+    fetch('https://opentdb.com/api.php?amount=5&category=11&difficulty=medium&type=multiple')
+    .then(res => res.json())
+    .then(apiFetch => (this.quizQuestions = apiFetch.results))
+    console.log('these are the quiz questions', this.quizQuestions)
+    // console.log('here is the answer to question 1: ', this.quizQuestions[0].correct_answer)
+  },
+    components: {
+    "list-questions": ListQuestions,
+
+  },
+
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
