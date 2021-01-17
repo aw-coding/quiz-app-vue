@@ -1,8 +1,11 @@
 <template>
 <div>
   <p v-html="question.question"></p>
-  <p v-html="question.incorrect_answers"></p>
-  <p v-html="answerOptions"></p>
+  <p v-html="question.correct_answer"></p>
+
+  <p> {{mergeQuestions}}</p>
+  <p> These are answer options {{answerOptions}}</p>
+
   <button v-for='answer in question.incorrect_answers' :key="answer" >{{answer}}</button>
 
 </div>
@@ -30,7 +33,25 @@ export default {
   },
     computed: {
       mergeQuestions: function () {
-          this.answerOptions.push('first')
+        // this.answerOptions.push(this.question.correct_answer)
+        // this.question.incorrect_answers.push(this.question.correct_answer)
+        // this.answerOptions = this.question.incorrect_answers.sort(() => Math.random() -0.5)
+        let randomInt = Math.floor(Math.random() * (4 - 0)) + 0;
+
+        this.answerOptions = [...this.question.incorrect_answers]
+        this.answerOptions.splice(randomInt, 0, this.question.correct_answer)
+        console.log(randomInt)
+
+        // this.answerOptions.push(this.question.incorrect_answers)
+        // this.answerOptions.push(this.question.correct_answer)
+
+
+
+        // this.answerOptions.push('first')
+        // this.answerOptions.push(this.question.correct_answer)
+        // this.answerOptions.push(this.question.incorrect_answers)
+
+        // this.answerOptions = this.question.incorrect_answers.map()
 
       }
 
@@ -41,10 +62,8 @@ export default {
 
     },
     mounted: function () {
-        // for (answer in this.question.incorrect_answers) {this.answerOptions.push('first')}
-        this.answerOptions.push('first')
-        this.answerOptions.push(this.question.correct_answer)
-        this.answerOptions.push(this.question.incorrect_answers)
+    
+
     },
 
 
