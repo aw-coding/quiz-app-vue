@@ -6,7 +6,7 @@
 <script>
 export default {
     name: 'display-questions',
-    props: ['question',]
+    props: ['choice']
 
 }
 </script>

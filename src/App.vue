@@ -1,7 +1,7 @@
 <template>
 <div id="app">
 <h1> Movie Quiz</h1>
-<button v-on:click="testMessage">Print q1 correct answer to console</button>
+<!-- <button v-on:click="testMessage">Print q1 correct answer to console</button> -->
 <list-questions :quizQuestions='quizQuestions' > </list-questions>
 </div>
   
@@ -38,6 +38,11 @@ export default {
 }
 </script>
 
-<style>
+<style lang="css">
+h1 {
+  display: flex;
+  text-align: center;
+
+}
 
 </style>
