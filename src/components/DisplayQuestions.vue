@@ -1,5 +1,4 @@
 <template>
-  <button v-html="question.correct_answer" ></button>
 
 </template>
 

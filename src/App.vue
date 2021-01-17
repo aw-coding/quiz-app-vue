@@ -1,7 +1,6 @@
 <template>
 <div id="app">
 <h1> Movie Quiz</h1>
-<!-- <button v-on:click="testMessage">Print q1 correct answer to console</button> -->
 <list-questions :quizQuestions='quizQuestions' > </list-questions>
 </div>
   
@@ -28,7 +27,6 @@ export default {
     .then(res => res.json())
     .then(apiFetch => (this.quizQuestions = apiFetch.results))
     console.log('these are the quiz questions', this.quizQuestions)
-    // console.log('here is the answer to question 1: ', this.quizQuestions[0].correct_answer)
   },
     components: {
     "list-questions": ListQuestions,
