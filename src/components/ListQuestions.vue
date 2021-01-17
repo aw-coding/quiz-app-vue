@@ -1,6 +1,6 @@
 <template>
 <ul>
-    <display-answers v-for='(question, index) in quizQuestions' :question='question' :key='index' :answer='answer' > </display-answers>
+    <display-answers v-for='(question, index) in quizQuestions' :question='question' :key='index' > </display-answers>
 </ul>
 </template>
 
